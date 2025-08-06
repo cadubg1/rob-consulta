@@ -1,45 +1,28 @@
-CHANGELOG
-=========
+# CHANGELOG
 
-6.2
----
+## 1.2.0 - 2015-08-15
 
- * Add a new `filter` argument to `debug:dotenv` command to filter variable names
+* Body as `"0"` is now properly added to a response.
+* Now allowing forward seeking in CachingStream.
+* Now properly parsing HTTP requests that contain proxy targets in
+  `parse_request`.
+* functions.php is now conditionally required.
+* user-info is no longer dropped when resolving URIs.
 
-5.4
----
+## 1.1.0 - 2015-06-24
 
- * Add `dotenv:dump` command to compile the contents of the .env files into a PHP-optimized file called `.env.local.php`
- * Add `debug:dotenv` command to list all dotenv files with variables and values
- * Add `$overrideExistingVars` on `Dotenv::bootEnv()` and `Dotenv::loadEnv()`
+* URIs can now be relative.
+* `multipart/form-data` headers are now overridden case-insensitively.
+* URI paths no longer encode the following characters because they are allowed
+  in URIs: "(", ")", "*", "!", "'"
+* A port is no longer added to a URI when the scheme is missing and no port is
+  present.
 
-5.1.0
------
+## 1.0.0 - 2015-05-19
 
- * added `Dotenv::bootEnv()` to check for `.env.local.php` before calling `Dotenv::loadEnv()`
- * added `Dotenv::setProdEnvs()` and `Dotenv::usePutenv()`
- * made Dotenv's constructor accept `$envKey` and `$debugKey` arguments, to define
-   the name of the env vars that configure the env name and debug settings
- * deprecated passing `$usePutenv` argument to Dotenv's constructor
+Initial release.
 
-5.0.0
------
+Currently unsupported:
 
- * using `putenv()` is disabled by default
-
-4.3.0
------
-
- * deprecated use of `putenv()` by default. This feature will be opted-in with a constructor argument to `Dotenv`
-
-4.2.0
------
-
- * added `Dotenv::overload()` and `$overrideExistingVars` as optional parameter of `Dotenv::populate()`
- * added `Dotenv::loadEnv()` to load a .env file and its corresponding .env.local, .env.$env and .env.$env.local files if they exist
-
-3.3.0
------
-
- * [BC BREAK] Since v3.3.7, the latest Dotenv files override the previous ones. Real env vars are not affected and are not overridden.
- * added the component
+- `Psr\Http\Message\ServerRequestInterface`
+- `Psr\Http\Message\UploadedFileInterface`
